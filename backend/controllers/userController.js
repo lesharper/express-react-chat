@@ -1,44 +1,58 @@
 const ApiError = require('../error/ApiError')
 const userService = require('../service/userService')
 const bcrypt = require('bcrypt')
+const uuid = require('uuid')
+const path = require('path')
 
 class UserController {
 
     async registration(req, res, next) {
-        const {name, email, password, gender_id} = req.body
+        try {
+            const {username, email, password} = req.body
+            const {avatar} = req.files
+            let fileName = uuid.v4() + '.jpg'
+            avatar.mv(path.resolve(__dirname, '..', 'static', fileName))
 
-        if(!email || !password)
-            return next(ApiError.BAD_REQUEST('Некорректный email или password'))
+            if(!email || !password)
+                return next(ApiError.BAD_REQUEST('Некорректный email или password'))
 
-        const candidate = await userService.findByEmail(email)
+            const candidate = await userService.findByEmail(email)
 
-        if(candidate)
-            return next(ApiError.BAD_REQUEST('Пользователь уже существует'))
+            if(candidate)
+                return next(ApiError.BAD_REQUEST('Пользователь уже существует'))
 
-        const hashPassword = await bcrypt.hash(password, 5)
-        const user = await userService.create(name, email, hashPassword, gender_id)
-        const token = userService.generateJwt(user.id, name, email, user.role_id, gender_id)
-        return res.json({token})
+            const hashPassword = await bcrypt.hash(password, 5)
+            const user = await userService.create(username, email, hashPassword, fileName)
+            const token = userService.generateJwt(user.id, username, email, user.avatar)
+            return res.json({token})
+        } catch (err) {
+            return next(ApiError.BAD_REQUEST(err.message))
+        }
+
     }
 
     async login(req, res, next) {
-        const {email, password} = req.body
-        const user = await userService.findByEmail(email)
+        try {
+            const {email, password} = req.body
+            const user = await userService.findByEmail(email)
 
-        if(!user)
-            return next(ApiError.BAD_REQUEST('Пользователя не существует'))
+            if(!user)
+                return next(ApiError.BAD_REQUEST('Пользователя не существует'))
 
-        let comparePassword = bcrypt.compareSync(password, user.password)
+            let comparePassword = bcrypt.compareSync(password, user.password)
 
-        if(!comparePassword)
-            return next(ApiError.BAD_REQUEST('Указан не верный пароль'))
+            if(!comparePassword)
+                return next(ApiError.BAD_REQUEST('Указан не верный пароль'))
 
-        const token = userService.generateJwt(user.id, user.name, email, user.role_id, user.gender_id)
-        return res.json({token})
+            const token = userService.generateJwt(user.id, user.username, email, user.avatar)
+            return res.json({token})
+        } catch (err) {
+            return next(ApiError.BAD_REQUEST(err.message))
+        }
     }
 
     async check(req, res, next) {
-        const token = userService.generateJwt(req.user.id, req.user.name, req.user.email, req.user.role_id, req.user.gender_id)
+        const token = userService.generateJwt(req.user.id, req.user.username, req.user.email, req.user.avatar)
         return res.json({token})
     }
 }
