@@ -1,0 +1,43 @@
+.header {
+    @apply
+    h-20 bg-peach flex justify-end items-center
+    shadow-md
+    /*sticky top-0*/
+}
+.menu_icon {
+    @apply
+    h-7 mx-12 cursor-pointer
+    lg:hidden
+}
+.menu {
+    @apply
+    text-2xl mx-12
+    hover:text-amber-700
+    lg:block hidden
+}
+
+.dropdown {
+    @apply
+    h-20 text-2xl w-full flex flex-col justify-center items-center bg-yellow-400
+    hover:text-amber-700
+    shadow-md
+}
+
+.logo {
+    @apply
+    flex grow items-center w-7
+}
+
+.logo_icon {
+    @apply
+    h-14 mx-8
+    hover:animate-spin
+}
+
+.logo_text {
+    @apply
+    text-2xl font-black
+}
+
+
+

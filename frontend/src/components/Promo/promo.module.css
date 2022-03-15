@@ -1,0 +1,23 @@
+.promo {
+    @apply
+    my-5 flex justify-center items-center bg-peach  h-72
+    md:h-[400px]
+    xl:h-[700px]
+    shadow-md
+}
+
+.image {
+    @apply
+    hidden
+    md:block
+    md:h-[300px]
+    xl:h-[600px]
+}
+
+.text {
+    @apply
+    text-center w-[600px] text-xl
+    lg:text-2xl
+    xl:text-3xl
+
+}

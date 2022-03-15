@@ -1,0 +1,15 @@
+
+.footer {
+    @apply
+    h-20 bg-peach flex justify-center items-center
+}
+
+.title {
+    @apply
+    font-black text-2xl
+}
+
+.year {
+    @apply
+    text-gray-600
+}

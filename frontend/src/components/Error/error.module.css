@@ -1,0 +1,14 @@
+.error {
+    @apply
+    flex justify-center items-center
+}
+
+.status {
+    @apply
+    text-3xl text-red-500
+}
+
+.message {
+    @apply
+    text-2xl
+}
