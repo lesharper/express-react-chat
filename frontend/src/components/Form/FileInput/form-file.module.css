@@ -1,0 +1,13 @@
+.form_title {
+    @apply
+    m-2 text-xl
+}
+
+.form_file {
+    @apply
+    flex justify-center items-center cursor-pointer border-2 border-gray-400 h-28 w-56 border-dashed
+}
+.form_file_input {
+    @apply
+    hidden
+}

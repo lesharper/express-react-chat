@@ -1,0 +1,32 @@
+.container {
+    @apply
+    flex my-2 w-[300px] rounded-md border-2 shadow-md
+    sm:w-[550px]
+}
+
+.avatar {
+    @apply
+    hidden
+    sm:flex w-28 border-2 rounded-full justify-center items-center
+}
+
+.details {
+    @apply
+    flex h-24 flex-col w-full
+}
+
+.title {
+    @apply
+    flex  justify-center text-xl
+    md:pr-20
+}
+
+.icon_wrap {
+    @apply
+    px-5 flex w-full justify-end
+}
+
+.icon {
+    @apply
+    h-5
+}

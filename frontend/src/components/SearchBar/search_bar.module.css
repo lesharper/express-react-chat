@@ -1,0 +1,16 @@
+.container {
+    @apply
+    flex justify-between items-center border-2 rounded-md m-6 w-[300px] bg-white
+    md:w-[500px]
+}
+
+.search_bar {
+    @apply
+    h-9 mx-2 text-xl w-full outline-none
+}
+
+.icon {
+    @apply
+    px-2 h-7 text-gray-300
+    last:text-red-500 last:cursor-pointer
+}

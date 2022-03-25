@@ -1,0 +1,29 @@
+.container {
+    @apply
+    flex flex-col
+}
+
+.header {
+    @apply
+    flex w-full h-20 text-2xl justify-center items-center
+}
+
+.field_container {
+    @apply
+    m-4 w-[550px] flex justify-around  items-center
+    px-5 py-5 rounded-md shadow-md
+}
+
+.footer {
+    @apply
+    h-20 flex flex-col items-center justify-between
+}
+
+.btn {
+    @apply
+    text-xl px-7 py-1 w-max bg-yellow-400 rounded-md shadow-md
+    hover:bg-yellow-500 ease-in duration-200
+}
+
+
+

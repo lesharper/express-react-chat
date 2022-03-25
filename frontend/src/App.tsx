@@ -6,6 +6,8 @@ import Layout from './pages/Layout';
 import NotFound from './pages/NotFound';
 import Registration from "./pages/Registration";
 import Authorization from "./pages/Authorization";
+import Profile from "./pages/Profile";
+import Messenger from "./pages/Messenger";
 
 const App: FC = () => {
     return (
@@ -15,6 +17,8 @@ const App: FC = () => {
                     <Route path="/" element={<Home/>}/>
                     <Route path="/registration" element={<Registration/>}/>
                     <Route path="/login" element={<Authorization/>}/>
+                    <Route path="/profile" element={<Profile/>}/>
+                    <Route path="/messenger" element={<Messenger/>}/>
                     <Route path="*" element={<NotFound/>}/>
                 </Route>
             </Routes>

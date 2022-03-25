@@ -1,10 +1,11 @@
 import React from 'react';
+import FormSignUpt from "../components/Form/Registration/FormSignUpt"
 
 const Registration = () => {
     return (
-        <div>
-            Тут регаемся
-        </div>
+        <>
+           <FormSignUpt/>
+        </>
     );
 }
 

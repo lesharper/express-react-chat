@@ -4,10 +4,10 @@ import Promo from "../components/Promo/Promo";
 
 const Home: FC = () => {
     return (
-        <div>
+        <>
             <Promo/>
            <ContainerPosts/>
-        </div>
+        </>
     );
 }
 

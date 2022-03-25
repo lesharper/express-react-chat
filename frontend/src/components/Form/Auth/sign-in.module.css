@@ -1,0 +1,45 @@
+.container {
+    @apply
+    flex flex-col items-center justify-center h-screen
+}
+
+.form {
+    @apply
+    flex flex-col h-[400px] w-[700px]
+}
+
+.sign_up {
+    @apply
+    flex flex-col w-1/2 bg-zinc-900 justify-center items-center shadow-md rounded-l-md
+}
+
+.title {
+    @apply
+    flex ml-10 w-full text-xl justify-center items-center
+}
+
+.sign_in {
+    @apply
+    flex w-1/2 flex-col justify-center items-center bg-peach rounded-r-md shadow-md
+}
+
+.footer {
+    @apply
+    flex w-[250px] items-center justify-end
+}
+
+.btn {
+    @apply
+    text-xl px-5 py-1 w-max bg-orange-400 rounded-md shadow-md
+    hover:bg-orange-500 ease-in duration-200
+}
+
+.link {
+    @apply
+    text-xl my-3 px-7 py-1 w-max bg-zinc-700 text-white rounded-full
+    hover:bg-zinc-500
+    ease-in duration-200
+}
+
+
+

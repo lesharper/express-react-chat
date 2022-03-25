@@ -1,0 +1,40 @@
+.container {
+    @apply
+    block relative px-10 m-1 cursor-pointer
+
+}
+
+.container input {
+    @apply
+    absolute opacity-0 cursor-pointer
+}
+
+.checkmark {
+    @apply
+    absolute top-1.5 left-0 h-4 w-4 bg-gray-200 rounded-lg duration-150
+}
+
+.container:hover input ~ .checkmark {
+    @apply
+    bg-gray-400 duration-150
+}
+
+.container input:checked ~ .checkmark {
+    @apply
+    bg-yellow-400 duration-150
+}
+
+.checkmark:after {
+    @apply
+    content-none absolute
+}
+
+.container input:checked ~ .checkmark:after {
+    @apply
+    block
+}
+
+.title {
+    @apply
+    flex text-xl h-10 w-36 items-start
+}
