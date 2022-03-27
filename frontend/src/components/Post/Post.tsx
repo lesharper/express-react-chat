@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styles from "./post.module.css"
 
 interface PostProps {
-    image: string,
+    image: string
     description: string
 }
 

@@ -2,7 +2,6 @@
     @apply
     h-20 bg-peach flex justify-end items-center
     shadow-md
-    /*sticky top-0*/
 }
 .menu_icon {
     @apply

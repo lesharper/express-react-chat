@@ -11,7 +11,7 @@ import FormCheckbox from "../Checkbox/FormCheckbox";
 interface FormCreateDiscussionProps {
     clear: boolean
 }
-const FormCreateDiscussion: FC<FormCreateDiscussionProps> = ({clear}) => {
+const CreateDiscussion: FC<FormCreateDiscussionProps> = ({clear}) => {
 
     const methods = useForm<FormDiscussion>({mode:"onTouched",resolver: yupResolver(discussionSchema)});
 
@@ -50,4 +50,4 @@ const FormCreateDiscussion: FC<FormCreateDiscussionProps> = ({clear}) => {
     );
 }
 
-export default FormCreateDiscussion;
+export default CreateDiscussion;

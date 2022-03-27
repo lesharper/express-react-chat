@@ -1,7 +1,8 @@
 .container {
     @apply
-    flex my-2 w-[300px] rounded-md border-2 shadow-md
-    sm:w-[550px]
+    flex my-2 w-[300px] rounded-md border-2 shadow-md bg-peach-light
+    sm:w-[550px] duration-150
+    hover:bg-white cursor-pointer
 }
 
 .avatar {

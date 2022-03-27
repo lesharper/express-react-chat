@@ -1,0 +1,40 @@
+.container {
+    @apply
+    flex flex-col items-center justify-center h-screen
+}
+
+.form {
+    @apply
+    flex flex-col h-[400px] w-[700px] items-center
+}
+
+.profile {
+    @apply
+    flex flex-col bg-peach justify-center items-center shadow-md rounded-md p-10
+}
+
+.title {
+    @apply
+    flex ml-10 w-full text-xl justify-center items-center
+}
+
+.footer {
+    @apply
+    ml-10 flex w-[250px] items-center justify-center
+}
+
+.btn {
+    @apply
+    text-xl px-5 py-1 w-max bg-orange-400 rounded-md shadow-md
+    hover:bg-orange-500 ease-in duration-200
+}
+
+.link {
+    @apply
+    text-xl my-3 px-7 py-1 w-max bg-zinc-700 text-white rounded-full
+    hover:bg-zinc-500
+    ease-in duration-200
+}
+
+
+

@@ -1,10 +1,10 @@
 import React from 'react';
-import FormSignIn from "../components/Form/Auth/FormSignIn";
+import SignIn from "../components/Form/SignIn/SignIn";
 
 const Authorization = () => {
     return (
         <>
-            <FormSignIn/>
+            <SignIn/>
         </>
     );
 }
