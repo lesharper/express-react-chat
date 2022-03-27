@@ -1,7 +1,7 @@
 
 .footer {
     @apply
-    h-20 bg-peach flex justify-center items-center
+    h-32 bg-peach flex justify-center items-center
 }
 
 .title {

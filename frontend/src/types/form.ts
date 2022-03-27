@@ -1,19 +1,21 @@
 export interface FormRegistration {
-    username: string
-    email: string
-    password: string
-    avatar: object
+    readonly  username: string
+    readonly  email: string
+    readonly  password: string
+    readonly  avatar: object
 }
 
 export interface FormDiscussion {
-    title: string
-    password?:string
-    anonymous?:boolean
-    description: string
-    poster: object
+    readonly title: string
+    readonly password?:string
+    readonly anonymous?:boolean
+    readonly description: string
+    readonly poster: object
 }
 
 export type FormLogin = Omit<FormRegistration, "username" | "avatar">
+
+export type FormProfile = FormRegistration
 
 export enum Icons {
     username,

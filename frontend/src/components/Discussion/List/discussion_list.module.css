@@ -1,12 +1,13 @@
 .container {
     @apply
-    m-2 w-[300px] rounded-md
-    md:w-[800px]
+    m-7 p-10 w-[300px] rounded-md
+    md:w-[800px] bg-peach-light shadow-md
 }
 
 .header {
     @apply
-    flex justify-center items-center h-12 bg-peach
+    flex justify-center items-center w-full cursor-pointer text-emerald-600 text-xl
+    hover:text-emerald-400 duration-150
 }
 
 .icon {

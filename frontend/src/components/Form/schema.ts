@@ -36,3 +36,5 @@ export const discussionSchema = Yup.object().shape({
     poster: Yup.mixed()
         .required()
 })
+
+export const profileSchema = registrationSchema
