@@ -3,7 +3,7 @@ import {AppModule} from './app.module';
 import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
 
 async function start() {
-    const PORT = process.env.PORT || 5000
+    const PORT = process.env.PORT || 5001
     const app = await NestFactory.create(AppModule);
     const config = new DocumentBuilder()
         .setTitle('Онлайн - мессенджер')
@@ -13,6 +13,12 @@ async function start() {
         .build()
     const document = SwaggerModule.createDocument(app, config)
     SwaggerModule.setup('/api/docs', app, document)
+    app.enableCors({
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        origin: 'http://localhost:3000',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        credentials: true
+    })
     await app.listen(PORT, () => console.log(`Server has been started port - ${PORT}`));
 }
 

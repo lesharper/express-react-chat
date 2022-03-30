@@ -12,7 +12,7 @@ export class DiscussionsService {
     async createDiscussion(dto: CreateDiscussionDto, image: any) {
         const fileName = await this.fileService.createFile(image)
         const discussion = await this.discussionRepository.create({...dto, poster: fileName})
-        return discussion
+        return 'Беседа создана'
     }
 
     async getAllDiscussions() {

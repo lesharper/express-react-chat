@@ -3,6 +3,7 @@ import {Discussion} from "../../../types/discussion";
 import {KeyIcon} from "@heroicons/react/outline";
 import anonymousIcon from "../../../images/anonymous.svg"
 import styles from "./discussion_item.module.css"
+import {BASE_URL} from "../../../constants";
 
 interface DiscussionItemProps {
     discussion: Discussion
@@ -11,7 +12,7 @@ interface DiscussionItemProps {
 const DiscussionItem: FC<DiscussionItemProps> = ({discussion}) => {
     return (
         <div className={styles.container}>
-            <div className={styles.avatar}>{discussion.id}</div>
+            <img className={styles.avatar} src={`${BASE_URL}/${discussion.poster}`}/>
             <div className={styles.details}>
                 <span className={styles.title}>{discussion.title}</span>
                 <div className={styles.icon_wrap}>

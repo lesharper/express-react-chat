@@ -2,7 +2,7 @@ export interface FormRegistration {
     readonly  username: string
     readonly  email: string
     readonly  password: string
-    readonly  avatar: object
+    readonly  avatar: FileList
 }
 
 export interface FormDiscussion {
@@ -10,10 +10,10 @@ export interface FormDiscussion {
     readonly password?:string
     readonly anonymous?:boolean
     readonly description: string
-    readonly poster: object
+    readonly poster: FileList
 }
 
-export type FormLogin = Omit<FormRegistration, "username" | "avatar">
+export type FormLogin = Omit<FormRegistration, 'username' | 'avatar'>
 
 export type FormProfile = FormRegistration
 

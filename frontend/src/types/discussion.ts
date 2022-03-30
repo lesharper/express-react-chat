@@ -1,7 +1,9 @@
 export interface Discussion {
     id: number
     title: string
+    description: string
     anonymous: boolean
-    password: string | undefined
+    password: string
+    poster: string
 
 }

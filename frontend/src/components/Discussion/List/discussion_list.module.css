@@ -1,7 +1,6 @@
 .container {
     @apply
-    m-7 p-10 w-[300px] rounded-md
-    md:w-[800px] bg-peach-light shadow-md
+    m-7 p-10 w-[800px] bg-peach-light shadow-md rounded-md
 }
 
 .header {

@@ -8,7 +8,7 @@ import Modal from "../../Modal/Modal";
 import CreateDiscussion from "../../Form/Discussion/CreateDiscussion";
 
 interface DiscussionListProps {
-    discussions: Discussion[]
+    discussions: Discussion[] | undefined
 }
 
 const discussionsVariants = {
@@ -33,7 +33,7 @@ const DiscussionList: FC<DiscussionListProps> = ({discussions}) => {
                     <PlusCircleIcon className="m-3 h-7"/>
                     <span>СОЗДАТЬ</span>
                 </header>
-                {discussions.map((discussion, index) =>
+                {discussions?.map((discussion, index) =>
                     <motion.div
                         key={discussion.id}
                         variants={discussionsVariants}
