@@ -1,0 +1,4 @@
+.container {
+    @apply
+    m-7 w-[800px] bg-peach-light shadow-md rounded-md
+}

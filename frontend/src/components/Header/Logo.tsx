@@ -1,5 +1,4 @@
 import React from 'react';
-import {ChatAlt2Icon} from "@heroicons/react/solid";
 import {Link} from "react-router-dom";
 import styles from "./header.module.css"
 import logo from "../../images/sun.png"

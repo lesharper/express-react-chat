@@ -7,10 +7,13 @@ import {KeyIcon, MailIcon, UserIcon} from "@heroicons/react/outline";
 interface FormFieldProps {
     icon?: Icons
     title: string
+    type?: string
+    disabled?:boolean
     registerName: string
+    mock?:any
 }
 
-const FormInput: FC<FormFieldProps> = ({icon, title, registerName}) => {
+const FormInput: FC<FormFieldProps> = ({icon, title,type,disabled, registerName,mock}) => {
     const {register, formState} = useFormContext();
     const {errors} = formState
     return (
@@ -26,7 +29,9 @@ const FormInput: FC<FormFieldProps> = ({icon, title, registerName}) => {
                 }
 
                 <input
-                    type="text"
+                    type={type ?? "text"}
+                    defaultValue={mock}
+                    disabled={disabled ?? false}
                     {...register(registerName)}
                     className={styles.form_control}
                     style={errors[registerName] ? {borderBottom: "1px solid red"} : {}}

@@ -1,10 +1,13 @@
 import React from 'react';
 import Editor from "../components/Form/Profile/Editor";
+import {useRecoilValue} from "recoil";
+import {userAtom} from "../store/atoms";
 
 const Profile = () => {
+    const user = useRecoilValue(userAtom)
     return (
         <div>
-            <Editor/>
+            <Editor mock={user}/>
         </div>
     );
 }

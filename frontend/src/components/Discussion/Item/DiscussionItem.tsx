@@ -4,6 +4,7 @@ import {KeyIcon} from "@heroicons/react/outline";
 import anonymousIcon from "../../../images/anonymous.svg"
 import styles from "./discussion_item.module.css"
 import {BASE_URL} from "../../../constants";
+import {Link} from "react-router-dom";
 
 interface DiscussionItemProps {
     discussion: Discussion
@@ -11,7 +12,7 @@ interface DiscussionItemProps {
 
 const DiscussionItem: FC<DiscussionItemProps> = ({discussion}) => {
     return (
-        <div className={styles.container}>
+        <Link className={styles.container} to={`/chat/${discussion.id}`}>
             <img className={styles.avatar} src={`${BASE_URL}/${discussion.poster}`}/>
             <div className={styles.details}>
                 <span className={styles.title}>{discussion.title}</span>
@@ -20,7 +21,7 @@ const DiscussionItem: FC<DiscussionItemProps> = ({discussion}) => {
                     {discussion.password ? <KeyIcon className={styles.icon}/> : ''}
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
 

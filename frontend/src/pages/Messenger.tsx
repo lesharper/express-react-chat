@@ -10,14 +10,13 @@ const Messenger = () => {
     useEffect(  () => {
         const fetch = async () => {
             const response = await getAllDiscussions()
-            console.log("Беседы - ", response)
             setDiscussions(response)
         }
         fetch()
     }, [])
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="min-h-screen flex flex-col items-center">
             <div className="flex justify-center items-center sticky top-0 w-full bg-peach shadow-md">
                 <SearchBar/>
             </div>

@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {FormProvider, useForm} from "react-hook-form";
 import {FormRegistration} from "../../../types/form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
@@ -6,24 +6,35 @@ import {registrationSchema} from "../schema";
 import styles from "./sign-up.module.css";
 import {motion} from "framer-motion"
 import FormInput from "../Input/FormInput";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import FormFile from "../FileInput/FormFile";
 import {Icons} from "../../../types/form"
+import {signUp} from "../../../requests/user";
+import {useSetRecoilState} from "recoil";
+import {userAtom} from "../../../store/atoms";
 
 const SignUp: FC = () => {
-    const methods = useForm<FormRegistration>({mode:"onTouched",resolver: yupResolver(registrationSchema)});
 
-    const onSubmit = (formData: FormRegistration) => console.log(formData);
+    const navigate = useNavigate()
+    const methods = useForm<FormRegistration>({mode:"onTouched",resolver: yupResolver(registrationSchema)});
+    const setUser = useSetRecoilState(userAtom)
+
+    const onSubmit = async (formData: FormRegistration) => {
+        const response = await signUp(formData)
+        setUser(response)
+        methods.reset()
+        navigate('/')
+    };
 
     const signInVariants = {
         hidden: {y: 200, opacity: 0},
         visible: {y: 0, opacity: 1},
     }
-
     const signUpVariants = {
         hidden: {y: -200, opacity: 0},
         visible: {y: 0, opacity: 1},
     }
+
     return (
         <FormProvider {...methods}>
             <div className={styles.container}>
@@ -34,7 +45,7 @@ const SignUp: FC = () => {
                             <header className={styles.title}>Регистрация</header>
                             <FormInput icon={Icons.username} title="Имя пользователя" registerName="username"/>
                             <FormInput icon={Icons.email} title="Почта" registerName="email"/>
-                            <FormInput icon={Icons.password} title="Пароль" registerName="password"/>
+                            <FormInput icon={Icons.password} title="Пароль" registerName="password" type="password"/>
                             <div className="ml-10 my-2">
                                 <FormFile title="Загрузить аватар" registerName="avatar"/>
                             </div>

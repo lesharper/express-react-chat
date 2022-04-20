@@ -6,7 +6,6 @@ import {BrowserRouter} from "react-router-dom";
 import {RecoilRoot} from "recoil";
 
 ReactDOM.render(
-
   <React.StrictMode>
       <RecoilRoot>
           <BrowserRouter>

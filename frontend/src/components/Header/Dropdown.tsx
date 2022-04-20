@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
 import {privateRoutings, publicRoutings} from "./routings"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import styles from "./header.module.css";
-import {v4 as uuidv4} from "uuid";
-import {useRecoilValue} from "recoil"
-import {isAuthState} from "../../store/atoms"
+import {useRecoilValue, useSetRecoilState} from "recoil"
+import {isAuthSelector} from "../../store/selectors";
+import {userAtom} from "../../store/atoms";
 
 interface DropdownProps {
     isOpen: boolean
@@ -12,16 +12,27 @@ interface DropdownProps {
 }
 
 const PublicLinks = publicRoutings.map((link) => <Link to={link.path} className={styles.dropdown}
-                                                       key={uuidv4()}>{link.title}</Link>)
+                                                       key={link.path}>{link.title}</Link>)
 
 const PrivateLinks = privateRoutings.map((link) => <Link to={link.path} className={styles.dropdown}
-                                                         key={uuidv4()}>{link.title}</Link>)
+                                                         key={link.path}>{link.title}</Link>)
 
 const Dropdown: FC<DropdownProps> = ({isOpen, toggle}) => {
-    const isAuth = useRecoilValue(isAuthState)
+
+    const navigate = useNavigate()
+    const isAuth = useRecoilValue(isAuthSelector)
+    const setUser = useSetRecoilState(userAtom)
+
+    const logout = () => {
+        setUser(undefined)
+        localStorage.clear()
+        navigate('/')
+    }
+
     return (
         <div className={isOpen ? '' : "hidden"} onClick={toggle}>
             {isAuth ? PrivateLinks : PublicLinks}
+            {isAuth && <button className={styles.dropdown} onClick={logout}>Выйти</button>}
         </div>
     );
 }

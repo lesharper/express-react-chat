@@ -7,7 +7,6 @@ axios.defaults.withCredentials = true;
 
 export const createDiscussion = async (data: FormDiscussion) => {
     try {
-        console.log(data)
         const formData = new FormData()
         formData.append('title', data.title)
         formData.append('description', data.description)

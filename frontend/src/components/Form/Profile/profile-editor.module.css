@@ -1,16 +1,18 @@
 .container {
     @apply
-    flex flex-col items-center justify-center h-screen
+    flex items-center justify-center h-screen
+    bg-red-500
 }
 
-.form {
-    @apply
-    flex flex-col h-[400px] w-[700px] items-center
-}
 
 .profile {
     @apply
     flex flex-col bg-peach justify-center items-center shadow-md rounded-md p-10
+}
+
+.avatar {
+    @apply
+    h-52 w-52 rounded-full object-cover
 }
 
 .title {

@@ -1,0 +1,29 @@
+.container {
+   @apply
+   h-full w-28 flex items-center justify-evenly duration-150
+   hover:bg-peach-dark duration-150
+}
+
+.avatar {
+   @apply
+   h-16 w-16 rounded-full object-cover shadow-md
+}
+
+.chevron {
+   @apply
+   h-6 cursor-pointer
+}
+
+.dropdown {
+   @apply
+   absolute flex flex-col justify-center top-20 right-0 w-[300px]
+   bg-peach-dark shadow-md rounded-md z-10
+}
+
+.menu {
+   @apply
+   text-2xl w-full flex justify-center items-center h-16 rounded-md
+   hover:bg-black
+   hover:text-white
+
+}

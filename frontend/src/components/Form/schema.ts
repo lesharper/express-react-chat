@@ -2,7 +2,7 @@ import * as Yup from "yup";
 
 export const registrationSchema = Yup.object().shape({
     username: Yup.string()
-        .required('Имя пользователя обязательно')
+        .required('Имя обязательно')
         .min(5, 'Не менее пяти символов')
         .max(25, 'Не более двадцати пяти символов'),
     email: Yup.string()

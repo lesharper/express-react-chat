@@ -11,6 +11,7 @@ import Checkbox from "../Checkbox/Checkbox";
 import {createDiscussion} from "../../../requests/discussions";
 import {Discussion} from "../../../types/discussion";
 
+
 interface FormCreateDiscussionProps {
     clear: boolean
 }
@@ -19,9 +20,11 @@ const CreateDiscussion: FC<FormCreateDiscussionProps> = ({clear}) => {
     const methods = useForm<FormDiscussion>({mode:"onTouched",resolver: yupResolver(discussionSchema)});
 
     const [response, setResponse] = useState<Discussion | undefined>()
+
     const onSubmit = async (formData: FormDiscussion) => {
         const response = await createDiscussion(formData)
         setResponse(response)
+        methods.reset()
     };
 
     const [checkPass, setCheckPass] = useState<boolean>(false)

@@ -1,6 +1,6 @@
 .container {
     @apply
-    flex my-2 w-[300px] rounded-md border-2 shadow-md bg-peach-light
+    flex my-2 w-[300px] rounded-md border-2 border-zinc-300 shadow-md bg-peach-light
     sm:w-[550px] duration-150
     hover:bg-white cursor-pointer
 }
@@ -8,7 +8,7 @@
 .avatar {
     @apply
     hidden
-    sm:flex w-28 border-2 rounded-full justify-center items-center
+    sm:flex w-24 rounded-full justify-center items-center
 }
 
 .details {

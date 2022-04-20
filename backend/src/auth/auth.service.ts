@@ -11,7 +11,8 @@ export class AuthService {
 
     constructor(private userService: UsersService,
                 private jwtService: JwtService,
-                private fileService: FilesService) {}
+                private fileService: FilesService) {
+    }
 
     async login(userDto: CreateUserDto) {
         const user = await this.validateUser(userDto)
@@ -29,8 +30,13 @@ export class AuthService {
         return this.generateToken(user)
     }
 
+    async check(data) {
+        const user = await this.userService.getUserByEmail(data.email)
+        return this.generateToken(user)
+    }
+
     private async generateToken(user: User) {
-        const payload = {id: user.id, username: user.username, email: user.email, avatar: user.avatar }
+        const payload = {id: user.id, username: user.username, email: user.email, avatar: user.avatar}
         return {
             token: this.jwtService.sign(payload)
         }
@@ -42,4 +48,6 @@ export class AuthService {
         if (user && passwordEquals) return user
         throw new UnauthorizedException({message: 'Некорректные данные'})
     }
+
+
 }
