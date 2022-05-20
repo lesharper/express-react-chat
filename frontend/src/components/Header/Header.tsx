@@ -3,7 +3,7 @@ import styles from "./header.module.css"
 import Navbar from "./Navbar";
 import {MenuIcon, UserIcon} from "@heroicons/react/solid";
 import Logo from "./Logo";
-import ProfileMenu from "../../ProfileMenu/ProfileMenu";
+import ProfileMenu from "../ProfileMenu/ProfileMenu";
 import {useRecoilValue} from "recoil";
 import {isAuthSelector} from "../../store/selectors";
 

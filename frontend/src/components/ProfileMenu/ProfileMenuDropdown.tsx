@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
-import {privateRoutings} from "../components/Header/routings";
+import {privateRoutings} from "../Header/routings";
 import {Link, useNavigate} from "react-router-dom";
 import styles from "./profile-menu.module.css";
 import {useSetRecoilState} from "recoil";
-import {userAtom} from "../store/atoms";
+import {userAtom} from "../../store/atoms";
 
 
 interface ProfileMenuDropdownProps {

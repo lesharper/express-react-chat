@@ -8,6 +8,8 @@ import {UsersDiscussions} from "./discussions/users-discussions.model";
 import { AuthModule } from './auth/auth.module';
 import { FilesModule } from './files/files.module';
 import {ServeStaticModule} from "@nestjs/serve-static";
+import { ChatModule } from './chat/chat.module';
+import { ChatGateway } from './chat/chat.gateway';
 import * as path from "path"
 
 @Module({
@@ -29,9 +31,10 @@ import * as path from "path"
         DiscussionsModule,
         AuthModule,
         FilesModule,
+        ChatModule,
     ],
     controllers: [],
-    providers: [],
+    providers: [ChatGateway],
 
 })
 export class AppModule {

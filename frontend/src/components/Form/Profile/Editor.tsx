@@ -24,7 +24,6 @@ const Editor: FC<EditorProps> = ({mock}) => {
     return (
         <FormProvider {...methods}>
             <div className={styles.container}>
-
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
                     <div className={styles.profile}>
                         <img src={`${BASE_URL}/${mock?.avatar}`} alt="avatar" className={styles.avatar}/>

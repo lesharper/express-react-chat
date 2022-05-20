@@ -1,7 +1,6 @@
 .container {
     @apply
     flex items-center justify-center h-screen
-    bg-red-500
 }
 
 
