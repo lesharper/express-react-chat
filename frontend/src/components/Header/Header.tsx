@@ -5,7 +5,7 @@ import {MenuIcon, UserIcon} from "@heroicons/react/solid";
 import Logo from "./Logo";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
 import {useRecoilValue} from "recoil";
-import {isAuthSelector} from "../../store/selectors";
+import {authSelector} from "../../store/selectors/auth";
 
 interface HeaderProps  {
     toggle: () => void
@@ -13,7 +13,7 @@ interface HeaderProps  {
 
 const Header: FC<HeaderProps> = ({toggle}) => {
     const [open, setOpen] = useState<boolean>(false)
-    const isAuth = useRecoilValue(isAuthSelector)
+    const isAuth = useRecoilValue(authSelector)
     return (
         <div className={styles.header}>
             <Logo/>

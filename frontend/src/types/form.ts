@@ -16,9 +16,3 @@ export interface FormDiscussion {
 export type FormLogin = Omit<FormRegistration, 'username' | 'avatar'>
 
 export type FormProfile = FormRegistration
-
-export enum Icons {
-    username,
-    email,
-    password
-}

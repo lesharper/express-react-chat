@@ -1,0 +1,9 @@
+{
+  "PORT": 7000,
+  "DATABASE_HOST": "localhost",
+  "DATABASE_USER": "postgres",
+  "DATABASE_PASSWORD": "lesharper",
+  "DATABASE_PORT": 5432,
+  "DATABASE_DB": "nchat",
+  "SECRET": "nodeninja"
+}

@@ -10,7 +10,7 @@ export const registrationSchema = Yup.object().shape({
         .email('Некорректная почта'),
     password: Yup.string()
         .required('Пароль обязателен')
-        .min(10, 'Не менее десяти символов'),
+        .min(5, 'Не менее пяти символов'),
     avatar: Yup.mixed()
         .required()
 })
@@ -21,7 +21,7 @@ export const loginSchema = Yup.object().shape({
         .email('Некорректная почта'),
     password: Yup.string()
         .required('Пароль обязателен')
-        .min(10, 'Не менее десяти символов'),
+        .min(5, 'Не менее пяти символов'),
 })
 
 export const discussionSchema = Yup.object().shape({

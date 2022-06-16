@@ -10,7 +10,7 @@ import Profile from "./pages/Profile";
 import Messenger from "./pages/Messenger";
 import {check} from "./requests/user";
 import {useSetRecoilState} from "recoil";
-import {userAtom} from "./store/atoms";
+import {userAtom} from "./store/atoms/user";
 import Chat from "./pages/Chat";
 
 const App: FC = () => {

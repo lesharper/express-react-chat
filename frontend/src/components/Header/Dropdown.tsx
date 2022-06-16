@@ -3,8 +3,8 @@ import {privateRoutings, publicRoutings} from "./routings"
 import {Link, useNavigate} from "react-router-dom";
 import styles from "./header.module.css";
 import {useRecoilValue, useSetRecoilState} from "recoil"
-import {isAuthSelector} from "../../store/selectors";
-import {userAtom} from "../../store/atoms";
+import {authSelector} from "../../store/selectors/auth";
+import {userAtom} from "../../store/atoms/user";
 
 interface DropdownProps {
     isOpen: boolean
@@ -20,7 +20,7 @@ const PrivateLinks = privateRoutings.map((link) => <Link to={link.path} classNam
 const Dropdown: FC<DropdownProps> = ({isOpen, toggle}) => {
 
     const navigate = useNavigate()
-    const isAuth = useRecoilValue(isAuthSelector)
+    const isAuth = useRecoilValue(authSelector)
     const setUser = useSetRecoilState(userAtom)
 
     const logout = () => {

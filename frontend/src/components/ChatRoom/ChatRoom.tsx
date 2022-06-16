@@ -1,32 +1,93 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from "./chat-room.module.css"
 import {useChat} from "../../hooks/useChat";
+import {ArrowLeftIcon, ChevronRightIcon, DotsHorizontalIcon} from "@heroicons/react/solid";
+import {DocumentAddIcon} from "@heroicons/react/outline";
+import {useRecoilValue} from "recoil";
+import {userAtom} from "../../store/atoms/user";
+import {BASE_URL} from "../../constants";
+import io, {Socket} from 'socket.io-client';
+import {useParams} from "react-router";
+import {discussionsSelector} from "../../store/selectors/discussions";
+import {useNavigate} from "react-router-dom";
+
 
 
 const ChatRoom = () => {
 
-    const [currentMessage, setCurrentMessage] = useState<string>('')
-    const {messages, sendMessage} = useChat()
+    const {id} = useParams()
+    const navigate = useNavigate()
+    const user = useRecoilValue(userAtom)
 
-    const allMessages = messages.map((message, key)=> {
-        return <div key={key} className="w-full bg-white h-16 mb-1 p-2">
-            {message}
+    const [currentMessage, setCurrentMessage] = useState<string>('')
+    const [messages, setMessages] = useState<string[]>([])
+
+    const [isConnected, seIstConnected] = useState(false)
+    const socket = useRef<Socket>()
+
+    const discussions = useRecoilValue(discussionsSelector)
+    const discussion = discussions.filter(item => item.id == Number(id))[0]
+
+    const allMessages = messages.map((message, key) =>
+        <div key={key} className={styles.my_message}>
+            <div className={styles.message_text}>
+                {message}
+            </div>
         </div>
-    })
+    )
+
+    const connect = () => {
+        if (!isConnected) {
+
+            socket.current = io(BASE_URL, {transports: ['polling']})
+            socket.current?.on('connect', () => {
+                seIstConnected(true)
+                console.log('Подключение установлено')
+            })
+        }
+
+        socket.current?.on('message', (data) => setMessages((prev) => [...prev, data?.message]))
+    }
+
+    useEffect(() => {
+        connect()
+
+        return () => {
+            console.log('Подключение отключено')
+            socket.current?.disconnect()
+        }
+    }, [])
 
     const messageHandler = () => {
-        sendMessage(currentMessage)
+        if (currentMessage)
+            sendMessage()
     }
+
+    const sendMessage = () => {
+        console.log('я еблан')
+        socket.current?.emit("message", {message: currentMessage})
+        setCurrentMessage('')
+    }
+
+    const changeHandler = ({target}: any) => setCurrentMessage(target.value)
+
     return (
         <div className={styles.container}>
-            <header className="h-[10%] bg-peach rounded-t-md"></header>
-            <div className="h-[70%] bg-zinc-300 overflow-y-scroll">
+            <header className={styles.header}>
+                <ArrowLeftIcon className={styles.icon} onClick={() => navigate('/messenger')}/>
+                <span className={styles.title}>{discussion.title}</span>
+                <DotsHorizontalIcon className={styles.icon}/>
+            </header>
+            <div className={styles.all_messages}>
                 {allMessages}
             </div>
-            <footer className="flex flex-col justify-center items-center h-[20%] bg-peach rounded-b-md">
-                <input type="text" className="w-[500px] h-20 outline-none p-5 rounded-md" value={currentMessage}
-                       onChange={(e) => setCurrentMessage(e.target.value)}/>
-                <button className="bg-yellow-400 w-[500px] h-10" onClick={messageHandler}>Отправить</button>
+            <footer className={styles.controls}>
+                <div>
+                    <button onClick={messageHandler}><DocumentAddIcon className={styles.icon}/></button>
+                    <textarea rows={2} cols={60} placeholder="Напишите сообщение..." value={currentMessage}
+                              onChange={changeHandler}/>
+                    <button onClick={messageHandler}><ChevronRightIcon className={styles.icon}/></button>
+                </div>
             </footer>
         </div>
     );

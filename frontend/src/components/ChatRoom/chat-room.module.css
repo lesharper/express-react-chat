@@ -2,3 +2,61 @@
     @apply
     m-7 w-[800px] bg-peach-light shadow-md rounded-md
 }
+
+
+.header {
+    @apply
+    flex items-center justify-between h-[10%] p-10 bg-peach rounded-t-md
+}
+
+.title {
+    @apply
+    text-2xl font-bold
+}
+
+.all_messages {
+    @apply
+    h-[70%] bg-zinc-200 overflow-y-scroll p-5
+}
+
+.my_message {
+    @apply
+    flex justify-start w-full h-24 mb-1
+}
+
+.other_message {
+    @apply
+    flex justify-end w-full h-24 mb-1
+}
+
+.message_text {
+    @apply
+    flex h-full w-[250px] bg-white rounded-md p-2
+}
+
+
+.controls {
+    @apply
+    flex justify-center items-center h-[20%] bg-peach rounded-b-md
+}
+
+.controls > div {
+    @apply
+    flex items-center justify-center border-2 border-yellow-800 bg-white w-[600px] rounded-md
+}
+
+
+.controls  textarea {
+    @apply
+    outline-none p-5 resize-none
+}
+
+.controls  button {
+    @apply
+    flex justify-center items-center  w-[70px] h-full rounded-md
+}
+
+.icon {
+    @apply
+    h-10 cursor-pointer
+}

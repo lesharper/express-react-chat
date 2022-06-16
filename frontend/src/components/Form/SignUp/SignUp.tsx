@@ -8,22 +8,27 @@ import {motion} from "framer-motion"
 import FormInput from "../Input/FormInput";
 import {Link, useNavigate} from "react-router-dom";
 import FormFile from "../FileInput/FormFile";
-import {Icons} from "../../../types/form"
 import {signUp} from "../../../requests/user";
 import {useSetRecoilState} from "recoil";
-import {userAtom} from "../../../store/atoms";
+import {userAtom} from "../../../store/atoms/user";
 
 const SignUp: FC = () => {
 
     const navigate = useNavigate()
-    const methods = useForm<FormRegistration>({mode:"onTouched",resolver: yupResolver(registrationSchema)});
+    const methods = useForm<FormRegistration>({mode: "onTouched", resolver: yupResolver(registrationSchema)});
     const setUser = useSetRecoilState(userAtom)
 
+    const [response, setResponse] = useState(null)
     const onSubmit = async (formData: FormRegistration) => {
         const response = await signUp(formData)
-        setUser(response)
+        if (response.hasOwnProperty('error'))
+            setResponse(response.error)
+        else {
+            setUser(response)
+            navigate('/')
+        }
+
         methods.reset()
-        navigate('/')
     };
 
     const signInVariants = {
@@ -41,19 +46,20 @@ const SignUp: FC = () => {
 
                 <form onSubmit={methods.handleSubmit(onSubmit)} className={styles.form}>
                     <div className="flex h-full">
-                        <motion.div className={styles.sign_in} variants={signInVariants} initial='hidden' animate='visible'>
+                        <motion.div className={styles.sign_in} variants={signInVariants} initial='hidden'
+                                    animate='visible'>
                             <header className={styles.title}>Регистрация</header>
-                            <FormInput icon={Icons.username} title="Имя пользователя" registerName="username"/>
-                            <FormInput icon={Icons.email} title="Почта" registerName="email"/>
-                            <FormInput icon={Icons.password} title="Пароль" registerName="password" type="password"/>
-                            <div className="ml-10 my-2">
-                                <FormFile title="Загрузить аватар" registerName="avatar"/>
-                            </div>
+                            <FormInput title="Имя пользователя" registerName="username"/>
+                            <FormInput title="Почта" registerName="email"/>
+                            <FormInput title="Пароль" registerName="password" type="password"/>
+                            <FormFile title="Загрузить аватар" registerName="avatar"/>
                             <div className={styles.footer}>
                                 <button type="submit" className={styles.btn}>Создать</button>
                             </div>
+                            {response && <span className="text-red-500">{response}</span>}
                         </motion.div>
-                        <motion.div className={styles.sign_up} variants={signUpVariants} initial='hidden' animate='visible'>
+                        <motion.div className={styles.sign_up} variants={signUpVariants} initial='hidden'
+                                    animate='visible'>
                             <span className="text-xl text-white">С возвращением!</span>
                             <Link to="/login" className={styles.link}>Войти</Link>
                         </motion.div>

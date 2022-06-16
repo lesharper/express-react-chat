@@ -38,7 +38,7 @@ const ContainerPosts: FC = () => {
                     variants={postVariants}
                     initial='hidden'
                     whileInView='visible'
-                    viewport={{amount: 0.3, once: false}}
+                    viewport={{amount: 0.3, once: true}}
                     custom={index}
                 >
                     <Post image={post.image} description={post.description}/>

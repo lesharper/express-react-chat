@@ -12,10 +12,6 @@
 
 .form_group {
     @apply
-    my-2 flex items-center
+    my-2 flex flex-col items-center
 }
 
-.icon {
-    @apply
-    h-5 mx-2
-}

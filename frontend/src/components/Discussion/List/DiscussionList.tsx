@@ -6,10 +6,9 @@ import {motion} from "framer-motion"
 import {PlusCircleIcon} from "@heroicons/react/outline";
 import Modal from "../../Modal/Modal";
 import CreateDiscussion from "../../Form/Discussion/CreateDiscussion";
+import {useRecoilValue} from "recoil";
+import {discussionsSelector} from "../../../store/selectors/discussions";
 
-interface DiscussionListProps {
-    discussions: Discussion[] | undefined
-}
 
 const discussionsVariants = {
     visible: (i: number) => ({
@@ -22,8 +21,10 @@ const discussionsVariants = {
     hidden: {x: -100, opacity: 0}
 }
 
-const DiscussionList: FC<DiscussionListProps> = ({discussions}) => {
+const DiscussionList: FC = () => {
     const [active, setActive] = useState<boolean>(false)
+    const discussions = useRecoilValue(discussionsSelector)
+    console.log(discussions)
     return (
         <div className={styles.container}>
             <main className={styles.list}>

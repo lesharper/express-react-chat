@@ -17,8 +17,8 @@ const DiscussionItem: FC<DiscussionItemProps> = ({discussion}) => {
             <div className={styles.details}>
                 <span className={styles.title}>{discussion.title}</span>
                 <div className={styles.icon_wrap}>
-                    {discussion.anonymous ? <img src={anonymousIcon} alt="anonymous" className={styles.icon}/> : ""}
-                    {discussion.password ? <KeyIcon className={styles.icon}/> : ''}
+                    {discussion.anonymous && <img src={anonymousIcon} alt="anonymous" className={styles.icon}/>}
+                    {discussion.password && <KeyIcon className={styles.icon}/>}
                 </div>
             </div>
         </Link>

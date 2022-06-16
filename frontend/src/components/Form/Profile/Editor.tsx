@@ -6,19 +6,28 @@ import {profileSchema} from "../schema";
 import styles from "./profile-editor.module.css";
 import FormInput from "../Input/FormInput";
 import FormFile from "../FileInput/FormFile";
-import {Icons} from "../../../types/form"
 import {User} from "../../../types/user";
 import {BASE_URL} from "../../../constants";
+import {updateUser} from "../../../requests/user";
+import {useSetRecoilState} from "recoil";
+import {userAtom} from "../../../store/atoms/user";
 
 interface EditorProps {
     mock: User | undefined
 }
+
 const Editor: FC<EditorProps> = ({mock}) => {
     const [disabled, setDissabled] = useState(true)
-
+    const [response, setResponse] = useState(null)
+    const setUser = useSetRecoilState(userAtom)
     const methods = useForm<FormProfile>({mode: "onTouched", resolver: yupResolver(profileSchema)});
 
-    const onSubmit = (formData: FormProfile) => console.log(formData);
+    const onSubmit = async (formData: FormProfile) => {
+        const response = await updateUser(formData)
+        console.log(response)
+        if (response.hasOwnProperty('error')) setResponse(response.error)
+        else setUser(response)
+    };
 
     const disabledHandler = () => setDissabled(false)
     return (
@@ -27,20 +36,19 @@ const Editor: FC<EditorProps> = ({mock}) => {
                 <form onSubmit={methods.handleSubmit(onSubmit)}>
                     <div className={styles.profile}>
                         <img src={`${BASE_URL}/${mock?.avatar}`} alt="avatar" className={styles.avatar}/>
-                        <FormInput icon={Icons.username} mock={mock?.username} title="Имя пользователя" registerName="username" disabled={disabled}/>
-                        <FormInput icon={Icons.email} mock={mock?.email} title="Почта" registerName="email" disabled={disabled}/>
-                        {/*<FormInput icon={Icons.password} title="Пароль" registerName="password"/>*/}
-                        <div className="ml-10 my-2">
-                            <FormFile title="Изменить аватар" registerName="avatar"/>
-                        </div>
+                        <FormInput mock={mock?.username} title="Имя пользователя" registerName="username"
+                                   disabled={disabled}/>
+                        <FormInput mock={mock?.email} title="Почта" registerName="email" disabled={disabled}/>
+                        <FormInput title="Пароль" registerName="password" disabled={disabled}/>
+                        <FormFile title="Изменить аватар" registerName="avatar" disabled={disabled}/>
                         <div className={styles.footer}>
                             {
                                 disabled
                                     ? <button className={styles.btn} onClick={disabledHandler}>Изменить</button>
                                     : <button type="submit" className={styles.btn}>Отправить</button>
                             }
-
                         </div>
+                        {response && <span className="text-red-500">{response}</span>}
                     </div>
                 </form>
             </div>

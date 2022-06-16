@@ -16,12 +16,12 @@
 
 .title {
     @apply
-    flex ml-10 w-full text-xl justify-center items-center
+    flex w-full text-xl justify-center items-center
 }
 
 .footer {
     @apply
-    ml-10 flex w-[250px] items-center justify-center
+     flex w-[250px] my-2 items-center justify-center
 }
 
 .btn {

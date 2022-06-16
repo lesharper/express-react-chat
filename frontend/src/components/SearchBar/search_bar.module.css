@@ -1,6 +1,6 @@
 .container {
     @apply
-    flex justify-between items-center border-2 rounded-md m-6 w-[300px] bg-white
+    flex justify-between items-center shadow-md p-1 m-6 w-[300px] bg-white rounded-md
     md:w-[500px]
 }
 

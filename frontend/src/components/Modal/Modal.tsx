@@ -11,7 +11,7 @@ const Modal: FC<ModalProps> = ({active, setActive, children}) => {
             : " flex h-screen w-screen fixed top-0 left-0 items-center justify-center opacity-0 pointer-events-none"
         } onClick={() => setActive(false)}>
             <div
-                className={active ? "scale-100" : "flex justify-center items-center p-16 rounded-md bg-white scale-50 transition-all duration-75 h-28 w-56"}
+                className={active ? "scale-100" : "flex justify-center items-center rounded-md bg-white scale-50 transition-all duration-75"}
                 onClick={e => e.stopPropagation()}
             >
                 {children}

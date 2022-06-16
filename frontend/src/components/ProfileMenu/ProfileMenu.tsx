@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styles from "./profile-menu.module.css"
 import {useRecoilValue} from "recoil";
-import {userAtom} from "../../store/atoms";
+import {userAtom} from "../../store/atoms/user";
 import {BASE_URL} from "../../constants";
 import {ChevronDownIcon} from "@heroicons/react/solid";
 import ProfileMenuDropdown from "./ProfileMenuDropdown";

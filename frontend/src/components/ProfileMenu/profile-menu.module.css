@@ -17,12 +17,12 @@
 .dropdown {
    @apply
    absolute flex flex-col justify-center top-20 right-0 w-[300px]
-   bg-peach-dark shadow-md rounded-md z-10
+   bg-peach-dark shadow-md  z-10
 }
 
 .menu {
    @apply
-   text-2xl w-full flex justify-center items-center h-16 rounded-md
+   text-2xl w-full flex justify-center items-center h-16
    hover:bg-black
    hover:text-white
 
