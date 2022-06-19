@@ -1,0 +1,30 @@
+.container {
+    @apply
+    w-[500px] shadow-md border-2 border-black rounded-md bg-white
+}
+
+.header {
+    @apply
+    flex justify-between items-center bg-peach h-16 p-5
+}
+
+.header > span {
+    @apply
+    text-xl
+}
+
+.icon {
+    @apply
+    h-7 cursor-pointer
+}
+
+.footer {
+    @apply
+    flex flex-col justify-evenly h-[170px] items-center bg-peach p-5
+}
+
+.footer > button {
+    @apply
+    text-xl bg-white w-full p-3 text-red-500 duration-100 shadow-md duration-100
+    hover:bg-black
+}

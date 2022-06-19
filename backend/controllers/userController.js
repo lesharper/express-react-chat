@@ -21,6 +21,7 @@ class UserController {
         avatar.mv(path.resolve(__dirname, '..', 'static', fileName))
 
         const user = await userService.create({username, email, password: hashPassword, avatar: fileName})
+        req.session.user = {...user[0], password: ''};
         return res.json({...user[0], password: ''})
     }
 

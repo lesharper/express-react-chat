@@ -1,0 +1,9 @@
+.loader {
+    @apply
+    flex justify-center items-center h-screen w-full
+}
+
+.block {
+    @apply
+    h-20 w-10 bg-black m-1
+}

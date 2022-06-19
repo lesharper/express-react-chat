@@ -1,0 +1,9 @@
+.modal {
+    @apply
+    flex h-screen w-screen fixed top-0 left-0 items-center justify-center pointer-events-auto duration-300 z-10
+}
+
+.modal_content {
+    @apply
+    flex justify-center items-center rounded-md transition-all
+}

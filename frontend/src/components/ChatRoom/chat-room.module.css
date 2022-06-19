@@ -1,3 +1,9 @@
+.container_uncofirmed {
+    @apply
+    flex flex-col justify-center items-center m-7 w-[800px] bg-peach-light shadow-md rounded-md
+}
+
+
 .container {
     @apply
     m-7 w-[800px] bg-peach-light shadow-md rounded-md
@@ -16,7 +22,12 @@
 
 .all_messages {
     @apply
-    h-[70%] bg-zinc-200 overflow-y-scroll p-5
+    h-[70%] bg-zinc-200 overflow-auto p-5 scroll-m-0
+}
+
+.all_messages::-webkit-scrollbar {
+    @apply
+    w-0 h-0
 }
 
 .my_message {
@@ -51,7 +62,7 @@
     outline-none p-5 resize-none
 }
 
-.controls  button {
+.controls  button, label {
     @apply
     flex justify-center items-center  w-[70px] h-full rounded-md
 }

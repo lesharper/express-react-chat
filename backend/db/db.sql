@@ -15,15 +15,18 @@ CREATE TABLE  users (
 CREATE TABLE discussions (
     id BIGSERIAL PRIMARY KEY,
     title VARCHAR(50) NOT NULL,
-    image VARCHAR(300) NOT NULL,
+    password VARCHAR(35) NULL,
+    anonymous BOOLEAN DEFAULT false,
+    poster TEXT NOT NULL,
+    description TEXT NOT NULL,
     creator_id INTEGER NOT NULL,
     FOREIGN KEY (creator_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
 CREATE TABLE messages (
   id BIGSERIAL PRIMARY KEY,
-  dateSend TIMESTAMP,
-  messageBody TEXT,
+  date_send TIMESTAMP,
+  message TEXT,
   user_id INTEGER,
   discussion_id INTEGER,
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
@@ -38,4 +41,3 @@ CREATE TABLE users_discussion (
   FOREIGN KEY (discussion_id) REFERENCES discussions (id) ON DELETE CASCADE
 );
 
-psql

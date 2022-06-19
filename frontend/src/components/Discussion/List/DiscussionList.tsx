@@ -1,5 +1,4 @@
 import React, {FC, useState} from 'react';
-import {Discussion} from "../../../types/discussion";
 import DiscussionItem from "../Item/DiscussionItem";
 import styles from "./discussion_list.module.css"
 import {motion} from "framer-motion"
@@ -7,24 +6,13 @@ import {PlusCircleIcon} from "@heroicons/react/outline";
 import Modal from "../../Modal/Modal";
 import CreateDiscussion from "../../Form/Discussion/CreateDiscussion";
 import {useRecoilValue} from "recoil";
-import {discussionsSelector} from "../../../store/selectors/discussions";
+import {discussionsByUserSelector} from "../../../store/selectors/discussionsByUser";
 
 
-const discussionsVariants = {
-    visible: (i: number) => ({
-        x: 0,
-        opacity: 1,
-        transition: {
-            delay: i * 0.03
-        }
-    }),
-    hidden: {x: -100, opacity: 0}
-}
-
-const DiscussionList: FC = () => {
+const DiscussionList = () => {
     const [active, setActive] = useState<boolean>(false)
-    const discussions = useRecoilValue(discussionsSelector)
-    console.log(discussions)
+    const discussionsByUser = useRecoilValue(discussionsByUserSelector)
+
     return (
         <div className={styles.container}>
             <main className={styles.list}>
@@ -34,18 +22,7 @@ const DiscussionList: FC = () => {
                     <PlusCircleIcon className="m-3 h-7"/>
                     <span>СОЗДАТЬ</span>
                 </header>
-                {discussions?.map((discussion, index) =>
-                    <motion.div
-                        key={discussion.id}
-                        variants={discussionsVariants}
-                        initial='hidden'
-                        whileInView='visible'
-                        viewport={{amount: 0.3, once: true}}
-                        custom={index}
-                    >
-                        <DiscussionItem discussion={discussion}/>
-                    </motion.div>
-                )}
+                {discussionsByUser?.map((discussion, key) => <DiscussionItem key={key} discussion={discussion}/>)}
             </main>
             <Modal active={active} setActive={setActive}>
                 <div className="flex justify-center items-center w-max bg-gray-300 rounded-md shadow-md">

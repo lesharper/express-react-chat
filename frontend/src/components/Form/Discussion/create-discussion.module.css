@@ -21,7 +21,7 @@
 
 .btn {
     @apply
-    text-xl px-7 py-1 w-max bg-yellow-400 rounded-md shadow-md
+    text-xl px-16 py-3 w-max bg-yellow-400 rounded-md shadow-md
     hover:bg-yellow-500 ease-in duration-200
 }
 

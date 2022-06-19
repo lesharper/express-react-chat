@@ -5,8 +5,8 @@
 
 .header {
     @apply
-    flex justify-center items-center w-full cursor-pointer text-emerald-600 text-xl
-    hover:text-emerald-400 duration-150
+    flex justify-center items-center w-full cursor-pointer text-emerald-600 text-xl duration-150
+    hover:text-emerald-400
 }
 
 .icon {

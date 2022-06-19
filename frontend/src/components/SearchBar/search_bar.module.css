@@ -9,8 +9,42 @@
     h-9 mx-2 text-xl w-full outline-none
 }
 
-.icon {
+.icon_search {
     @apply
     px-2 h-7 text-gray-300
     last:text-red-500 last:cursor-pointer
+}
+
+
+.container_item {
+    @apply
+    flex my-2 w-[300px] p-2 rounded-md  shadow-md bg-white cursor-pointer
+    sm:w-[550px] duration-150
+}
+
+.avatar {
+    @apply
+    hidden
+    sm:flex h-[120px] w-[150px] rounded-full justify-center items-center object-cover
+}
+
+.details {
+    @apply
+    flex h-24 flex-col w-full
+}
+
+.title {
+    @apply
+    flex  justify-center text-xl
+    md:pr-20
+}
+
+.icon_wrap {
+    @apply
+    px-5 flex w-full justify-end
+}
+
+.icon {
+    @apply
+    h-5
 }

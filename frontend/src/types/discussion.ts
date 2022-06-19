@@ -5,5 +5,5 @@ export interface Discussion {
     anonymous: boolean
     password: string
     poster: string
-
+    creator_id: number
 }
